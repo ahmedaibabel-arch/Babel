@@ -13,7 +13,7 @@ Generates:
 Appends to data/examples/all_examples.jsonl
 
 Requires:
-  GOOGLE_CLOUD_PROJECT and GOOGLE_APPLICATION_CREDENTIALS set (source ~/bin/gcloud-hustle.sh)
+  GOOGLE_CLOUD_PROJECT and Application Default Credentials configured.
 """
 
 import json
@@ -45,7 +45,7 @@ MAX_BACKOFF_S = float(AUGMENT_CFG.get("max_backoff_s", 8.0))
 REQUEST_TIMEOUT_MS = int(AUGMENT_CFG.get("request_timeout_ms", 45_000))
 RATE_LIMIT_COOLDOWN_S = float(AUGMENT_CFG.get("rate_limit_cooldown_s", 120.0))
 
-VERTEX_PROJECT  = os.environ.get("GOOGLE_CLOUD_PROJECT", "solid-outlook-498013-s6")
+VERTEX_PROJECT  = os.environ.get("GOOGLE_CLOUD_PROJECT", "YOUR_GOOGLE_CLOUD_PROJECT")
 VERTEX_LOCATION = "global"
 MODEL_POOL_CFG  = GEMINI_CFG.get("model_pool", [
     "gemini-3-flash-preview",
@@ -351,7 +351,7 @@ def main():
     probe_model = MODEL_POOL[0] if MODEL_POOL else "gemini-3-flash-preview"
     print(f"Checking Gemini API ({probe_model}, project={VERTEX_PROJECT})...")
     if not check_gemini():
-        print("ERROR: Gemini API not responding. Run: source ~/bin/gcloud-hustle.sh")
+        print("ERROR: Gemini API not responding. Set GOOGLE_CLOUD_PROJECT and Application Default Credentials.")
         sys.exit(1)
 
     print(f"✓ Gemini ready  |  workers={N_WORKERS}  |  target={N_CASES} examples")

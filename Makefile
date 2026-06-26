@@ -1,7 +1,7 @@
 PYTHON = .venv/bin/python
 VENV   = .venv
 
-.PHONY: all setup extract enrich grammalecte corrupt augment dataset train evaluate run status help
+.PHONY: all setup extract enrich corrupt augment dataset train evaluate run status help
 
 help:
 	@echo ""
@@ -33,9 +33,6 @@ extract:
 
 enrich:
 	$(PYTHON) scripts/08_download_extra_corpora.py
-
-grammalecte:
-	$(PYTHON) scripts/09_extract_grammalecte_tests.py
 
 corrupt:
 	$(PYTHON) scripts/02_corrupt_sentences.py

@@ -9,7 +9,7 @@ model:
   name: "mlx-community/gemma-3-4b-it-4bit"
   max_seq_length: 512
 
-books_dir: "/Users/ai/MendelLinguisticsBuilder/data/raw"
+books_dir: "data/raw_books"
 
 data:
   sentences_out: "data/sentences/clean_sentences.jsonl"
@@ -44,7 +44,6 @@ ollama:
   n_hard_cases: 5000
 
 agy:
-  bin: "/Users/ai/.local/bin/agy"
   n_hard_cases: 5000
   workers: 12
 

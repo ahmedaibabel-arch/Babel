@@ -63,5 +63,6 @@ make run
 - The project uses public-domain and open corpora for training.
 - No commercial third-party grammar-tool files, brand assets, or proprietary rule sets are included.
 - Common French vocabulary may still appear in the training text, including words that overlap with product names.
+- Review `THIRD_PARTY_NOTICES.md` before publishing generated datasets or model artifacts.
 
 See the docs folder for the source and workflow details.

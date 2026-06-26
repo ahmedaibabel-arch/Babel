@@ -24,7 +24,7 @@ SRC   = ROOT / cfg["data"]["examples_out"]
 TRAIN = ROOT / cfg["data"]["train_out"]
 VALID = ROOT / cfg["data"]["valid_out"]
 TEST  = ROOT / cfg["data"]["test_out"]
-GOLD  = ROOT / "data/gold/tome3_probe.jsonl"
+GOLD  = ROOT / "data/gold/private_probe.jsonl"
 
 TRAIN_RATIO = cfg["data"]["train_ratio"]
 VALID_RATIO = cfg["data"]["valid_ratio"]
@@ -123,7 +123,7 @@ def main():
 
     gold_examples = load_gold_examples()
     if gold_examples:
-        print(f"Loaded {len(gold_examples):,} Tome 3 gold examples from {GOLD}.")
+        print(f"Loaded {len(gold_examples):,} private gold examples from {GOLD}.")
 
     # Stratify by error type
     by_type: dict[str, list] = defaultdict(list)
@@ -151,7 +151,7 @@ def main():
     random.shuffle(valid_examples)
     random.shuffle(test_examples)
 
-    # Keep Tome 3 regression probes out of training. They are hard gates for
+    # Keep private regression probes out of training. They are hard gates for
     # checkpoint selection, so put a copy in validation and test.
     if gold_examples:
         valid_examples.extend(copy.deepcopy(gold_examples))

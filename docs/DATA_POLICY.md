@@ -7,7 +7,6 @@ The project is built from a mix of:
 - public-domain French book corpora
 - open linguistic resources such as UD French GSD
 - open reference material such as Wikipedia and Wikisource excerpts
-- grammars and test cases derived from Grammalecte-style examples
 
 ## What is not included
 
@@ -22,3 +21,5 @@ Common French vocabulary can still appear inside ordinary training sentences, in
 ## Reproducibility
 
 The large generated files are intentionally not tracked in git. Regenerate them locally with the pipeline scripts when needed.
+
+See `THIRD_PARTY_NOTICES.md` before using or redistributing any generated dataset.

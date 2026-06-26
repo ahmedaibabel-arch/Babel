@@ -1,0 +1,13 @@
+# Babel — Mac/Apple Silicon compatible (MLX-based, no CUDA required)
+mlx
+mlx-lm
+transformers
+sentencepiece
+protobuf
+spacy
+pyyaml
+tqdm
+orjson
+requests
+regex
+huggingface_hub

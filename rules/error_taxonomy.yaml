@@ -1,0 +1,155 @@
+homophones:
+  a_à:
+    pattern: "\\ba\\b"
+    replacement: "à"
+    explanation: "« a » (verbe avoir) confondu avec « à » (préposition)."
+  à_a:
+    pattern: "\\bà\\b"
+    replacement: "a"
+    explanation: "« à » (préposition) confondu avec « a » (verbe avoir)."
+  ou_où:
+    pattern: "\\bou\\b"
+    replacement: "où"
+    explanation: "« ou » (conjonction) confondu avec « où » (adverbe de lieu)."
+  où_ou:
+    pattern: "\\boù\\b"
+    replacement: "ou"
+    explanation: "« où » (adverbe de lieu) confondu avec « ou » (conjonction)."
+  et_est:
+    pattern: "\\bet\\b"
+    replacement: "est"
+    explanation: "« et » (conjonction) confondu avec « est » (verbe être, 3e sg.)."
+  est_et:
+    pattern: "\\best\\b"
+    replacement: "et"
+    explanation: "« est » (verbe être) confondu avec « et » (conjonction)."
+  son_sont:
+    pattern: "\\bson\\b"
+    replacement: "sont"
+    explanation: "« son » (possessif) confondu avec « sont » (verbe être, 3e pl.)."
+  sont_son:
+    pattern: "\\bsont\\b"
+    replacement: "son"
+    explanation: "« sont » (verbe être) confondu avec « son » (possessif)."
+  ces_ses:
+    pattern: "\\bces\\b"
+    replacement: "ses"
+    explanation: "« ces » (démonstratif pluriel) confondu avec « ses » (possessif pluriel)."
+  ses_ces:
+    pattern: "\\bses\\b"
+    replacement: "ces"
+    explanation: "« ses » (possessif pluriel) confondu avec « ces » (démonstratif pluriel)."
+  ce_se:
+    pattern: "\\bce\\b"
+    replacement: "se"
+    explanation: "« ce » (démonstratif) confondu avec « se » (pronom réfléchi)."
+  se_ce:
+    pattern: "\\bse\\b"
+    replacement: "ce"
+    explanation: "« se » (pronom réfléchi) confondu avec « ce » (démonstratif)."
+  leur_leurs:
+    pattern: "\\bleur\\b"
+    replacement: "leurs"
+    explanation: "« leur » (pronom/possessif singulier) confondu avec « leurs » (possessif pluriel)."
+  leurs_leur:
+    pattern: "\\bleurs\\b"
+    replacement: "leur"
+    explanation: "« leurs » (possessif pluriel) confondu avec « leur » (pronom/singulier)."
+  peu_peut:
+    pattern: "\\bpeu\\b"
+    replacement: "peut"
+    explanation: "« peu » (adverbe de quantité) confondu avec « peut » (verbe pouvoir, 3e sg.)."
+  peut_peu:
+    pattern: "\\bpeut\\b"
+    replacement: "peu"
+    explanation: "« peut » (verbe pouvoir) confondu avec « peu » (adverbe de quantité)."
+
+accents:
+  common_words:
+    - [était, etait]
+    - [résultats, resultats]
+    - [décidé, decide]
+    - [répondit, repondit]
+    - [même, meme]
+    - [très, tres]
+    - [après, apres]
+    - [déjà, deja]
+    - [général, general]
+    - [différent, different]
+    - [première, premiere]
+    - [quelque, quelque]
+    - [écouta, ecouta]
+    - [présent, present]
+    - [élève, eleve]
+    - [fenêtre, fenetre]
+    - [bientôt, bientot]
+    - [côté, cote]
+    - [arrêta, arreta]
+    - [matière, matiere]
+    - [légèrement, legerement]
+    - [pénètre, penetre]
+    - [étrange, etrange]
+    - [véritable, veritable]
+    - [théâtre, theatre]
+    - [ôta, ota]
+    - [âme, ame]
+    - [tête, tete]
+    - [être, etre]
+    - [crème, creme]
+    - [forêt, foret]
+    - [île, ile]
+    - [château, chateau]
+    - [fête, fete]
+    - [tôt, tot]
+    - [rôle, role]
+    - [trône, trone]
+    - [pâle, pale]
+    - [fantôme, fantome]
+    - [âgé, age]
+
+typography:
+  - type: french_spacing_question
+    description: "Espace manquante avant le point d'interrogation."
+  - type: french_spacing_exclamation
+    description: "Espace manquante avant le point d'exclamation."
+  - type: french_spacing_semicolon
+    description: "Espace manquante avant le point-virgule."
+  - type: french_spacing_colon
+    description: "Espace manquante avant les deux-points."
+  - type: straight_apostrophe
+    description: "Apostrophe droite au lieu de l'apostrophe typographique."
+  - type: straight_quotes
+    description: "Guillemets anglais au lieu des guillemets français."
+
+false_positives:
+  literary_fragments:
+    - "Silence."
+    - "Trop tard."
+    - "Rien."
+    - "Il avançait. Lentement."
+    - "La nuit. Encore."
+    - "Rouge, immense, vivant."
+    - "Un pas. Deux. L'effondrement."
+    - "Elle attendait. Toujours."
+    - "Impossible."
+    - "Peut-être."
+    - "Plus jamais."
+    - "Demain."
+    - "Maintenant ou jamais."
+    - "Seul, enfin."
+    - "Non."
+    - "Jamais."
+    - "Lui."
+    - "Elle."
+    - "Eux."
+    - "Debout."
+    - "Dehors."
+    - "Partout."
+    - "Nulle part."
+    - "Sans un mot."
+    - "Dans l'obscurité."
+    - "Trop loin."
+    - "Trop proche."
+    - "Alors."
+    - "Ainsi."
+    - "Voilà."

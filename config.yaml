@@ -1,0 +1,83 @@
+# Babel — French Corrector Fine-tuning Config
+
+project:
+  name: "babel"
+  version: "1.0"
+  output_dir: "outputs/babel-v1"
+
+model:
+  name: "mlx-community/gemma-3-4b-it-4bit"
+  max_seq_length: 512
+
+books_dir: "/Users/ai/MendelLinguisticsBuilder/data/raw"
+
+data:
+  sentences_out: "data/sentences/clean_sentences.jsonl"
+  examples_out:  "data/examples/all_examples.jsonl"
+  train_out:     "data/splits/train.jsonl"
+  valid_out:     "data/splits/valid.jsonl"
+  test_out:      "data/splits/test.jsonl"
+  train_ratio:   0.90
+  valid_ratio:   0.05
+  # remainder goes to test
+  min_sentence_len: 40
+  max_sentence_len: 350
+  target_examples: 120000   # total training examples to generate
+  clean_ratio: 0.35          # fraction of examples that are error-free
+
+corruption:
+  seed: 42
+
+training:
+  adapter_path: "outputs/babel-v2"
+  iters: 10000
+  batch_size: 2
+  lora_layers: 16
+  learning_rate: 2e-4
+  val_batches: 25
+  save_every: 500
+  grad_checkpoint: true
+
+ollama:
+  model: "mistral"
+  endpoint: "http://localhost:11434/api/generate"
+  n_hard_cases: 5000
+
+agy:
+  bin: "/Users/ai/.local/bin/agy"
+  n_hard_cases: 5000
+  workers: 12
+
+gemini:
+  # Weights bias more traffic toward cheaper flash models while keeping a smaller
+  # share of pro models for harder examples.
+  model_pool:
+    - "gemini-3.5-flash"
+    - "gemini-3-flash-preview"
+    - "gemini-3.1-pro-preview"
+    - "gemini-2.5-pro"
+    - "gemini-3.1-flash-lite-preview"
+  model_weights:
+    "gemini-3.5-flash": 4
+    "gemini-3-flash-preview": 3
+    "gemini-3.1-flash-lite-preview": 4
+    "gemini-2.5-pro": 1
+    "gemini-3.1-pro-preview": 1
+  workers: 12
+
+augment:
+  max_api_attempts: 2
+  base_backoff_s: 1.0
+  max_backoff_s: 8.0
+  request_timeout_ms: 45000
+
+system_prompt: >
+  Tu es Babel, un correcteur linguistique expert en français littéraire et standard.
+  Analyse le texte fourni. Identifie toutes les erreurs d'orthographe, de grammaire,
+  d'accord, d'homophones, de conjugaison et de typographie.
+  Retourne UNIQUEMENT un objet JSON valide. Aucun texte avant ou après le JSON.
+  Si le texte est correct, retourne {"errors": []}.
+  Chaque erreur contient: original (texte erroné exact), correction (texte corrigé),
+  type, explanation (en français).
+  Ne signale pas les fragments littéraires, le style oral dans les dialogues,
+  les noms propres inventés, ni les choix stylistiques volontaires.

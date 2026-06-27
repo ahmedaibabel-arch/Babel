@@ -2,6 +2,23 @@
 
 Babel's scripts can download or derive training examples from external sources. Review the upstream licenses before training, redistributing data, or publishing model artifacts.
 
+## Runtime And Build Dependencies
+
+- `mlx`
+- `mlx-lm`
+- `transformers`
+- `sentencepiece`
+- `protobuf`
+- `spacy`
+- `pyyaml`
+- `tqdm`
+- `orjson`
+- `requests`
+- `regex`
+- `huggingface_hub`
+
+These are listed in `requirements.txt`; verify their upstream license metadata before redistributing packaged builds.
+
 ## UD French GSD
 
 - Source: https://github.com/UniversalDependencies/UD_French-GSD

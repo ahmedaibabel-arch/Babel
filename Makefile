@@ -1,13 +1,14 @@
 PYTHON = .venv/bin/python
 VENV   = .venv
 
-.PHONY: all setup extract enrich corrupt augment dataset train evaluate run status help
+.PHONY: all setup scan extract enrich corrupt augment dataset train evaluate run status help
 
 help:
 	@echo ""
 	@echo "Babel — French Corrector Training Pipeline"
 	@echo ""
 	@echo "  make setup      Create venv and install dependencies"
+	@echo "  make scan       Run the banned-token clean-room scan"
 	@echo "  make extract    Phase 1:  Extract clean sentences from books"
 	@echo "  make enrich     Phase 1b: Add UD GSD + Wikipedia + Wikisource (register diversity)"
 	@echo "  make corrupt    Phase 2:  Generate error examples (algorithmic)"
@@ -27,6 +28,9 @@ setup:
 	$(VENV)/bin/pip install -r requirements.txt --quiet
 	$(VENV)/bin/python -m spacy download fr_core_news_sm --quiet
 	@echo "✓ Setup complete."
+
+scan:
+	python3 scripts/00_scan_banned_tokens.py
 
 extract:
 	$(PYTHON) scripts/01_extract_sentences.py

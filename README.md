@@ -49,6 +49,8 @@ Clean text returns:
 
 Generated datasets, logs, and model weights are intentionally excluded from version control. Rebuild them locally from the scripts when needed.
 
+See `CLEAN_ROOM.md`, `DATA_SOURCES.md`, `MODEL_CARD.md`, and `docs/architecture.md` for the repo's clean-room and licensing boundaries.
+
 ## Quick start
 
 ```bash

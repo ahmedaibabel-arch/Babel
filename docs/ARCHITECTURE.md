@@ -1,39 +1,26 @@
 # Architecture
 
-Babel is a sentence-level French corrector built around a simple pipeline:
+Babel is a local, sentence-level French corrector with a deliberately simple pipeline:
 
-1. Extract clean sentences from source corpora.
-2. Corrupt them deterministically to create paired supervision.
-3. Add hard negatives and harder grammar examples.
-4. Split the dataset into train, validation, and test sets.
-5. Fine-tune an MLX LoRA adapter.
-6. Run the adapter locally through `scripts/07_run_babel.py`.
+1. Extract clean French sentences from public or public-domain sources.
+2. Corrupt them deterministically to create labeled training pairs.
+3. Augment the dataset with additional open-resource examples where allowed.
+4. Split the data into train, validation, and test sets.
+5. Fine-tune an MLX LoRA adapter for local inference.
+6. Run the adapter through a strict JSON CLI.
 
-## Design goals
+## Runtime Shape
 
-- strict JSON output
-- local execution on Apple Silicon
-- reproducible dataset generation
-- enough negative examples to avoid over-correction
+- Input: one French sentence at a time.
+- Output: one JSON object with `errors`.
+- Presentation: the CLI can recover spans for display after inference.
 
-## Output contract
+## Repository Boundaries
 
-The runtime returns an object with one key:
+- No generated datasets or model weights are committed.
+- No private source paths are used in docs, configs, or scripts.
+- The repo keeps source attribution separate from implementation code.
 
-```json
-{"errors": []}
-```
+## Verification
 
-When errors exist, each item should include:
-
-- `original`
-- `correction`
-- `type`
-- `explanation`
-
-The runtime resolves positions for display after generation.
-
-## Notes
-
-- The project intentionally avoids shipping large generated assets in git.
-- The adapter and dataset are meant to be rebuilt locally from the scripts.
+The clean-room scan should pass before any release or public sharing of generated artifacts.
